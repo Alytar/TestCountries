@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">TextCountriesApp</string>
+    <string name="error_occurred">Error Occurred</string>
+    <string name="message_no_internet">No internet connection.\nPlease, check your internet connection and try again</string>
+    <string name="general_error_handler_server_error">The server is not responding. Please try again later
+    </string>
+    <string name="general_error_handler_unknown_error">Something went wrong. Try again later</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="retry_button_text">Retry</string>
+    <string name="ok">Ок</string>
+    <string name="close">Close</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="connection_to_network">Connection to network…</string>
+    <string name="user_not_found">User not found</string>
+
+    <string name="minuteSecondsTimePattern" translatable="false">%1$s:%2$s</string>
+    <string name="hoursMinutesSecondsTimePattern" translatable="false">%1$s:%2$s:%3$s</string>
+</resources>

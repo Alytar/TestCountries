@@ -1,0 +1,185 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'realm-android'
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+
+static def buildTime() {
+    def df = new SimpleDateFormat("yyyyMMdd-HHmm")
+    return df.format(new Date())
+}
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        applicationId "com.testcountriesapp"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "0.0.1"
+
+        android.applicationVariants.all { variant ->
+            variant.outputs.all { output ->
+                outputFileName = "${variant.applicationId}-v.${variant.versionName}(${variant.versionCode})-${variant.getName()}-${buildTime()}.apk"
+            }
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("../keystore/debug.keystore")
+            storePassword "testcountriesappdeb"
+            keyAlias "testcountriesappdeb"
+            keyPassword "testcountriesappdeb"
+        }
+        release {
+            storeFile file("../keystore/debug.keystore") // TODO change to jks in future
+            storePassword "testcountriesappdeb"
+            keyAlias "testcountriesappdeb"
+            keyPassword "testcountriesappdeb"
+        }
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled true
+            useProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules-debug.pro'
+
+            signingConfig signingConfigs.debug
+            versionNameSuffix "-debud"
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+
+    flavorDimensions "main"
+
+    productFlavors {
+        devUaResCut {
+            dimension "main"
+            resConfigs "xxhdpi" // faster building for test device
+
+            buildConfigField 'String', 'LAND_CODE', '"UA"'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+ext {
+    androidx_appcompat_version = '1.1.0-alpha03'
+    androidx_version = '1.0.0'
+    androidx_recycler_version = '1.1.0-alpha03'
+    androidx_material_version = '1.1.0-alpha04'
+    androidx_exifinterface_version = '1.0.0'
+    constraint_layout_version = '2.0.0-alpha3'
+    arch_version = '2.1.0-alpha03'
+    koin_version = '1.0.2'
+    timber_version = '4.7.1'
+    rx_java_version = '2.2.7'
+    rx_android_version = '2.1.1'
+    rx_kotlin_version = '2.3.0'
+    rx_permisiions_version = '0.10.2'
+    rx_network_version = '0.0.5'
+    rx_binding_version = '2.2.0'
+    rx_debug_version = '1.4.0'
+    retrofit_libs_version = '2.5.0'
+    okhttp_libs_version = '3.13.1'
+    joda_version = '2.10.1.1'
+    fresco_version = '1.13.0'
+    sdp_version = '1.0.6'
+    firebase_messaging_version = '17.4.0'
+    firebase_core_version = '16.0.8'
+    firebase_performance_version = '16.2.4'
+    crashlytics_version = '2.9.9'
+    pager_indicator_version = '1.0.3'
+    work_version = "1.0.0"
+    camera_view_version = '2.0.0-beta03'
+    cropper_version = '2.8.0'
+    glideSvg_version = 'v1.2.0'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //Support libs
+    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
+    implementation "androidx.legacy:legacy-support-v4:$androidx_version"
+    implementation "androidx.recyclerview:recyclerview:$androidx_recycler_version"
+    implementation "androidx.cardview:cardview:$androidx_version"
+    implementation "com.google.android.material:material:$androidx_material_version"
+    implementation "androidx.exifinterface:exifinterface:$androidx_exifinterface_version"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+    // Kotlin libs
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    // Arch components
+    implementation "androidx.lifecycle:lifecycle-common-java8:$arch_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$arch_version"
+
+    // Koin DI
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+
+    // Timber logger
+    implementation "com.jakewharton.timber:timber:$timber_version"
+
+    // Rx libs
+    implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rx_android_version"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rx_kotlin_version"
+    implementation "com.github.tbruyelle:rxpermissions:$rx_permisiions_version@aar"
+    implementation "it.greyfox:rxnetwork:$rx_network_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-support-v4-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-appcompat-v7-kotlin:$rx_binding_version"
+    implementation "com.jakewharton.rxbinding2:rxbinding-design-kotlin:$rx_binding_version"
+    implementation "com.akaita.java:rxjava2-debug:$rx_debug_version"
+
+    // Network
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_libs_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_libs_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_libs_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_libs_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_libs_version"
+
+    // Joda DateTime
+    implementation "net.danlew:android.joda:$joda_version"
+
+    // Fresco
+    implementation "com.facebook.fresco:fresco:$fresco_version"
+
+    //Glide
+    implementation "com.github.2coffees1team:GlideToVectorYou:$glideSvg_version"
+
+    // androin sdp
+    implementation "com.intuit.sdp:sdp-android:$sdp_version"
+
+    // Firebase
+    implementation "com.google.firebase:firebase-messaging:$firebase_messaging_version"
+    implementation "com.google.firebase:firebase-core:$firebase_core_version"
+    implementation "com.google.firebase:firebase-perf:$firebase_performance_version"
+
+    // Crashlytics
+    implementation "com.crashlytics.sdk.android:crashlytics:$crashlytics_version"
+}
+
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        tools:background="@color/blue_type6">
+
+    <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/country_flag"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:background="@color/blue_type4"
+            android:scaleType="centerCrop"
+    />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/country_name"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            tools:text="Ukraine from big country and la la "
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:fontFamily="@font/montserrat_alternates_black_italic"
+            app:layout_constraintStart_toEndOf="@+id/country_flag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/country_code"
+            app:layout_constraintBottom_toBottomOf="parent"
+    />
+
+    <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/country_code"
+            android:layout_width="@dimen/match_constraint"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:textSize="20sp"
+            tools:text="UA"
+            android:textColor="@color/black"
+            app:fontFamily="@font/montserrat_alternates_black_italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/country_name"
+    />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#3c30c1</color>
+    <color name="color_primary_dark">#ffffff</color>
+    <color name="color_accent">#1a14ba</color>
+    <color name="ripple">#32404040</color>
+
+    <color name="divider">#2a2933</color>
+    <color name="shadow_gradient">#20000000</color>
+    <color name="progress_loading_overlay">#c8ffffff</color>
+
+    <color name="transparent">#00ffffff</color>
+    <color name="white">#ffffff</color>
+
+    <color name="black">#000000</color>
+    <color name="black_type1">#212121</color>
+    <color name="black_type1_opacity_30">#4d212121</color>
+
+    <color name="gray">#70707d</color>
+    <color name="gray_opacity30">#4d70707d</color>
+    <color name="gray_opacity50">#7f70707d</color>
+    <color name="gray_type1">#f6f6f9</color>
+    <color name="gray_type2">#74736d</color>
+    <color name="gray_type3">#B8B8B8</color>
+    <color name="gray_type3_opacity30">#4db8b8b8</color>
+    <color name="gray_type3_opacity50">#80B8B8B8</color>
+    <color name="gray_type4_opacity30">#4c74736d</color>
+    <color name="gray_type4_opacity13">#2174736d</color>
+    <color name="gray_type5">#d8d8d8</color>
+
+    <color name="blue">#11049f</color>
+    <color name="blue_opacity_30">#4d11049f</color>
+    <color name="blue_type1">#0a0071</color>
+    <color name="blue_type3">#211174</color>
+    <color name="blue_type4">#0e4b96</color>
+    <color name="blue_type5">#e8eefb</color>
+    <color name="blue_type6">#b7d6ff</color>
+    <color name="blue_type7">#E9F3FF</color>
+    <color name="blue_type8">#D0E5FF</color>
+
+    <color name="orange">#ff776a</color>
+    <color name="orange_type1">#fcebec</color>
+
+    <color name="pink">#602472</color>
+    <color name="pink_type1">#eeedfc</color>
+    <color name="pink_type2">#c5c1f5</color>
+    <color name="pink_type3">#e4e1ff</color>
+    <color name="pink_type4">#eeedfc</color>
+
+    <color name="green">#278671</color>
+    <color name="green_type1">#eefbf9</color>
+</resources>
